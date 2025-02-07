@@ -16,7 +16,7 @@ Visit the [live demo](https://jenyxjs.github.io/tic-tac-toe/www/app.html) to see
 
 ## Library Repository
 
-Visit the [library repository]([link_to_repository](https://github.com/jenyxjs/jenyx)) to learn more about the project, its documentation, and how to contribute.
+Visit the [library repository](https://github.com/jenyxjs/jenyx) to learn more about the project, its documentation, and how to contribute.
 
 ## License
 
