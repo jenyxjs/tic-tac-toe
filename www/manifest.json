@@ -1,0 +1,17 @@
+{
+    "description": "Tic Tac Toe",
+    "name": "Tic Tac Toe",
+    "short_name": "Tic Tac Toe",
+    "start_url": "./",
+    "scope": "./",
+    "background_color": "hsl(200, 25%, 40%)",
+    "theme_color": "hsl(200, 25%, 40%)",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "./src/Assert/favicon.svg",
+            "sizes": "512x512",
+            "purpose": "any"
+        }
+    ]
+}
