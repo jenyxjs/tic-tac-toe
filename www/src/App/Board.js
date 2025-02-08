@@ -19,12 +19,9 @@ export class Board extends Control {
             style: [
                 'display: grid',
                 'grid-template-columns: repeat(3, 1fr)',
-                'max-height: 50vh',
-                'max-width: 50vh',
-                'margin: 0 auto',
-                'font-size: 2vw',
                 'font-family: cursive',
                 'background: aliceblue',
+                'line-height: 0',
             ],
             options
         });
