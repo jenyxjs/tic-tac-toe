@@ -18,11 +18,6 @@ export class Board extends Control {
                 cell_8: { class: Button },
                 cell_9: { class: Button },
             },
-            onclick: event => {
-                console.log(event);
-                if (this.winner || this.isDraw) {
-                }
-            },
             style: [
                 'display: grid',
                 'grid-template-columns: repeat(3, 1fr)',
@@ -44,6 +39,12 @@ export class Board extends Control {
                 }
             });
         });
+
+        this.on('click', event => {
+            if (this.winner || this.isDraw) {
+                console.log(event);
+            }
+        }, {bubbling: true});
 
         this.bind('moves', this, 'redraw');
     }
