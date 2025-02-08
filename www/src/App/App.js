@@ -3,6 +3,7 @@ import { Control } from '../../lib/jenyx/components/Control/Control.js';
 import { CssRule } from '../../lib/jenyx/components/CssRule/CssRule.js';
 import { Bar } from './Bar.js';
 import { Board } from './Board.js';
+import { Footer } from './Footer.js';
 import { Gear } from './Gear.js';
 
 export class App extends AbstractApp {
@@ -13,28 +14,18 @@ export class App extends AbstractApp {
                 parentNode: document.body,
                 margin: 0,
                 children: {
-                    bar: {
-                        class: Bar,
-                        style: [
-                            'font-size: 5vmin',
-                        ],
-                    },
-                    board: {
-                        class: Board,
-                        style: [
-                            'font-size: 20vmin',
-                        ],
-                    },
+                    bar: { class: Bar, },
+                    board: { class: Board, },
+                    footer: { class: Footer, },
                 },
                 style: [
                     'display: flex',
                     'flex-direction: column',
-                    'margin: 0 1em',
+                    'margin: 0 2vmin',
+                    'font-family: cursive',
                 ]
             },
-            gear: {
-                class: Gear,
-            },
+            gear: { class: Gear, },
         });
 
         new CssRule({
@@ -45,7 +36,7 @@ export class App extends AbstractApp {
                 'margin: 0',
             ]
         });
-        
+
         App.init.call(this);
     }
 

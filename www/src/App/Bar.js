@@ -11,9 +11,9 @@ export class Bar extends Control {
                 message: {
                     class: Label,
                     style: [
-                        'padding: 1rem',
+                        'padding: 2vmin',
                         'text-align: center',
-                        'font-family: cursive',
+                        'font-size: 5vmin',
                     ],
                 },
             },

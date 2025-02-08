@@ -21,9 +21,9 @@ export class Board extends Control {
             style: [
                 'display: grid',
                 'grid-template-columns: repeat(3, 1fr)',
-                'font-family: cursive',
                 'background: aliceblue',
                 'line-height: 0',
+                'font-size: 20vmin',
             ],
             options
         });
