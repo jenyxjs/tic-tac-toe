@@ -4,15 +4,19 @@ import { Label } from '../../lib/jenyx/components/Label/Label.js';
 export class Bar extends Control {
     constructor(options) {
         super({
+            moves: '',
+            winner: null,
+            isDraw: false,
             children: {
-                cell_1: {
+                message: {
                     class: Label,
-                    text: 'Button',
+                    style: [
+                        'padding: 1rem',
+                        'text-align: center',
+                        'font-family: cursive',
+                    ],
                 },
             },
-            style: [
-
-            ],
             options
         });
 
@@ -20,19 +24,20 @@ export class Bar extends Control {
     }
 
     static init() {
-
-        // this.gear.on('isDraw', event => {
-        //     if (this.gear.isDraw) {
-        //         console.log('Draw', this.gear);
-        //         setTimeout(() => { this.gear.reset(); }, 500);
-        //     }
-        // });
-
-        // this.gear.on('winner', event => {
-        //     if (this.gear.winner) {
-        //         console.log('Win', this.gear);
-        //         setTimeout(() => { this.gear.reset(); }, 500);
-        //     }
-        // });
+        this.bind('moves', this, 'refresh');
+        this.bind('isDraw', this, 'refresh');
+        this.bind('winner', this, 'refresh', {run: true});
     }
+
+    refresh () {
+        if (this.isDraw) {
+            this.message.text = 'Draw';
+        } else if (this.winner) {
+            this.message.text = 'Win - ' + this.winner.user.toUpperCase();
+        } else if (this.moves) {
+            this.message.text = 'Game in progress';
+        } else {
+            this.message.text = 'Start the game';
+        }
+    }   
 }

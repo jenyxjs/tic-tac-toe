@@ -37,14 +37,6 @@ export class App extends AbstractApp {
             },
         });
 
-        App.init.call(this);
-    }
-
-    static init() {
-        this.gear.bind('moves', this.layout.board);
-        this.gear.bind('winner', this.layout.board);
-        this.gear.bind('isDraw', this.layout.board);
-
         new CssRule({
             selector: 'html, body',
             style: [
@@ -53,6 +45,18 @@ export class App extends AbstractApp {
                 'margin: 0',
             ]
         });
+        
+        App.init.call(this);
+    }
+
+    static init() {
+        this.gear.bind('moves', this.layout.bar);
+        this.gear.bind('winner', this.layout.bar);
+        this.gear.bind('isDraw', this.layout.bar);
+
+        this.gear.bind('moves', this.layout.board);
+        this.gear.bind('winner', this.layout.board);
+        this.gear.bind('isDraw', this.layout.board);
 
         new ResizeObserver(() => {
             clearTimeout(resizeTimeout);

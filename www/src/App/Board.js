@@ -5,6 +5,8 @@ export class Board extends Control {
     constructor (options) {
         super({
             moves: '',
+            winner: null,
+            isDraw: false,
             children: {
                 cell_1: { class: Button },
                 cell_2: { class: Button },
@@ -15,6 +17,11 @@ export class Board extends Control {
                 cell_7: { class: Button },
                 cell_8: { class: Button },
                 cell_9: { class: Button },
+            },
+            onclick: event => {
+                console.log(event);
+                if (this.winner || this.isDraw) {
+                }
             },
             style: [
                 'display: grid',
