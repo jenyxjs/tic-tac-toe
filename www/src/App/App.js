@@ -28,6 +28,8 @@ export class App extends AbstractApp {
                     'flex-direction: column',
                     'align-items: center',
                     'font-family: cursive',
+                    'width: fit-content',
+                    'margin: auto',
                 ]
             },
             gear: { class: Gear, },
