@@ -19,10 +19,10 @@ export class Board extends Control {
             style: [
                 'display: grid',
                 'grid-template-columns: repeat(3, 1fr)',
-                'height: 100%',
-                'aspect-ratio: 1 / 1',
-                'justify-items: stretch',
-                'font-size: 20vw',
+                'max-height: 50vh',
+                'max-width: 50vh',
+                'margin: 0 auto',
+                'font-size: 2vw',
                 'font-family: cursive',
                 'background: aliceblue',
             ],
@@ -33,27 +33,15 @@ export class Board extends Control {
     }
 
     static init () {
-        this.initGrid();
-        this.bind('moves', this, 'redraw');
-    }
-
-    initGrid () {
         Object.entries(this.children).forEach(([key, cell], index) => {
-            let borderStyle = [];
-
-            if (![0, 1, 2].includes(index)) borderStyle.push('border-top: 2px solid black');
-            if (![6, 7, 8].includes(index)) borderStyle.push('border-bottom: 2px solid black');
-            if (![0, 3, 6].includes(index)) borderStyle.push('border-left: 2px solid black');
-            if (![2, 5, 8].includes(index)) borderStyle.push('border-right: 2px solid black');
-
-            cell.style = borderStyle;
-
             cell.on('click', () => {
                 if (!cell.text) {
                     this.moves += (index + 1);
                 }
             });
         });
+
+        this.bind('moves', this, 'redraw');
     }
 
     redraw () {

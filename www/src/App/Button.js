@@ -5,15 +5,16 @@ export class Button extends ActiveControl {
         super({
             style: [
                 'display: flex',
-                'justify-content: center',
                 'align-items: center',
+                'justify-content: center',
                 'text-decoration: none',
                 'cursor: pointer',
+                'border: 1px solid black',
+                'font-size: 15vmin',
                 'background: var(--jn-sf)',
                 'color: var(--jn-on-sf)',
                 'fill: var(--jn-on-sf)',
                 'aspect-ratio: 1 / 1',
-                'line-height: 0',
             ],
             styleSet: {
                 hovered: [
