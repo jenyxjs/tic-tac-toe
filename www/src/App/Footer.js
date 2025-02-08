@@ -10,7 +10,7 @@ export class Footer extends Control {
                     text: '© 2025',
                     style: [
                         'padding-top: 2vmin',
-                        'font-size: 3vmin',
+                        'font-size: 4vmin',
                     ],
                 },
             },

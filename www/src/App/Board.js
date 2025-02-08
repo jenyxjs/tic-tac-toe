@@ -24,6 +24,7 @@ export class Board extends Control {
                 'background: aliceblue',
                 'line-height: 0',
                 'font-size: 20vmin',
+                'border: 1px solid black',
             ],
             options
         });

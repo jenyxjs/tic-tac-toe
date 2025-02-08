@@ -15,13 +15,18 @@ export class App extends AbstractApp {
                 margin: 0,
                 children: {
                     bar: { class: Bar, },
-                    board: { class: Board, },
+                    board: { class: Board, 
+                        style: [
+                            'height: 80vmin',
+                            'width: 80vmin',
+                        ]
+                    },
                     footer: { class: Footer, },
                 },
                 style: [
                     'display: flex',
                     'flex-direction: column',
-                    'margin: 0 2vmin',
+                    'align-items: center',
                     'font-family: cursive',
                 ]
             },
@@ -48,34 +53,7 @@ export class App extends AbstractApp {
         this.gear.bind('moves', this.layout.board);
         this.gear.bind('winner', this.layout.board);
         this.gear.bind('isDraw', this.layout.board);
-
-        new ResizeObserver(() => {
-            clearTimeout(resizeTimeout);
-            var resizeTimeout = setTimeout(() => {
-                this.layout.margin = 0;
-                this.redraw();
-            }, 500);
-        }).observe(document.body);
-    }
-
-    redraw() {
-        var scroll = document.body.scrollHeight - window.innerHeight
-
-        if (scroll > 0) {
-            this.layout.margin++;
-        } else if (scroll < -24) {
-            this.layout.margin--;
-        }
-
-        this.layout.node.style.margin = '0 ' + (this.layout.margin || 1) + 'em';
-
-        if (document.body.scrollHeight - window.innerHeight > 0) {
-            this.redraw();
-        } else {
-            setTimeout(() => this.redraw());
-        }
     }
 }
 
 new App(window);
-

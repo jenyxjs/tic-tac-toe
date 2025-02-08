@@ -1,6 +1,7 @@
 # TODO
 
-- feat: add change font
-- feat: add Start button
+- feat: add Github link
+- feat: add Start game
+- feat: block button after over
 - feat: add Highlight win line
 - feat: add Google Analytics component

@@ -52,11 +52,13 @@ export class Gear extends Component {
             }
         }
 
+        
         return null;
     }
     
     getBotMove () {
         var wins = ['123', '456', '789', '147', '258', '369', '159', '357'];
+
         var xMoves = [...this.moves].filter((_, i) => i % 2 === 0).sort().join('');
         var oMoves = [...this.moves].filter((_, i) => i % 2 !== 0).sort().join('');
         var availableMoves = '123456789'.split('').filter(cell => !this.moves.includes(cell));
