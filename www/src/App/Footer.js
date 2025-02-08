@@ -21,7 +21,7 @@ export class Footer extends Control {
                 'width: 100%',
                 'gap: 3vmin',
                 'font-size: 4vmin',
-                'padding-top: 2vmin',
+                'padding-top: 3vmin',
             ],
             options
         });

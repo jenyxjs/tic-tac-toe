@@ -27,7 +27,7 @@ export class App extends AbstractApp {
                     'display: flex',
                     'flex-direction: column',
                     'align-items: center',
-                    'font-family: cursive',
+                    'font-family: system-ui',
                     'width: fit-content',
                     'margin: auto',
                 ]
