@@ -1,6 +1,5 @@
 # TODO
 
-- github - jenyx
 - feat: add animation move
 - feat: add Language page
 - feat: Settingc

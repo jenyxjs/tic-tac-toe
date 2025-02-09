@@ -12,8 +12,8 @@ export class Footer extends Control {
                 },
                 gihubButton: {
                     class: LinkButton,
-                    text: 'GitHub',
-                    href: 'https://github.com/jenyxjs/jenyx',
+                    text: 'Jenyx',
+                    href: 'https://github.com/jenyxjs/tic-tac-toe',
                 },
                 installButton: {
                     class: LinkButton,
@@ -36,6 +36,7 @@ export class Footer extends Control {
                 'gap: 3vmin',
                 'font-size: 4vmin',
                 'padding-top: 3vmin',
+                'width: 100%',
             ],
             options
         });
