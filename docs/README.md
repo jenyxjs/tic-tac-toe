@@ -1,10 +1,6 @@
 # TODO
 
-- feat: add svg background 
 - fead: add NavigationDriver
-- feat: win animation
-- feat: draw animation
-
 - feat: add Language page
 - feat: Setting
 - feat: mp3
