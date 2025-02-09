@@ -26,18 +26,18 @@ export class Bar extends Control {
     static init() {
         this.bind('moves', this, 'refresh');
         this.bind('isDraw', this, 'refresh');
-        this.bind('winner', this, 'refresh', {run: true});
+        this.bind('winner', this, 'refresh', { run: true });
     }
 
-    refresh () {
+    refresh() {
         if (this.isDraw) {
             this.message.text = 'Draw';
         } else if (this.winner) {
-            this.message.text = 'Win - ' + this.winner.user.toUpperCase();
+            this.message.text = 'Win - ' + this.winner.player.toUpperCase();
         } else if (this.moves) {
             this.message.text = 'Game in progress';
         } else {
             this.message.text = 'Start the game';
         }
-    }   
+    }
 }

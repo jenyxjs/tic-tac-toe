@@ -21,7 +21,6 @@ export class Board extends Control {
             style: [
                 'display: grid',
                 'grid-template-columns: repeat(3, 1fr)',
-                'background: aliceblue',
                 'line-height: 0',
                 'font-size: 20vmin',
                 'border: 1px solid black',
@@ -44,6 +43,8 @@ export class Board extends Control {
         this.bind('moves', this, 'redraw');
         this.bind('winner', this, 'effect');
         this.bind('isDraw', this, 'effect');
+
+        this.effect();
     }
 
     appendMove(event) {
@@ -68,12 +69,14 @@ export class Board extends Control {
 
     effect() {
         if (this.winner) {
+            var color = (this.winner.player == 'x') ? 'lightgreen' : 'lightcoral';
+
             for (var i in this.winner.path) {
                 var cell = this['cell_' + this.winner.path[i]];
-                cell.style = 'background: lightgreen';
+                cell.style = 'background: ' + color;
             }
         } else if (this.isDraw) {
-            this.style = 'background: lightcoral';
+            this.style = 'background: lightyellow';
         } else {
             this.style = 'background: aliceblue';
 

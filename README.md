@@ -6,11 +6,13 @@
 
 This library provides universal components for creating various applications in JavaScript, including games, interactive interfaces, and other web programs.
 
-## Source code
-
-```javascript
-// 
-```
+## Feat
+  
+- game gear
+- pwa
+- ...
+  
+Gziped full size of app (HTML + bundle.JS + images) < 10 Kb
 
 ## Example Usage
 
