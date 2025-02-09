@@ -13,30 +13,18 @@ export class IconButton extends ActiveControl {
                 'text-decoration: none',
                 'cursor: pointer',
                 'font-size: 0',
-                //'fill: red',
-                'background: green',
-                'filter: none',
+                'fill: var(--jn-text)',
+                'background: var(--jn-bg)',
             ],
             styleSet: {
                 hovered: [
-                    'filter: brightness(0.9)',
-                    'background: var(--ax-sf)',
-                ],
-                disabled: [
-                    'fill: var(--ax-grey-bg)',
-                    'cursor: default',
-                ],
-                selected_disabled: [
-                    'fill: var(--ax-grey-bg)',
-                    'cursor: default',
+                    'background: color-mix(in srgb, var(--jn-bg), var(--jn-grey) 10%)'
                 ],
                 selected: [
-                    'filter: brightness(0.8)',
-                    'background: var(--ax-sf)',
+                    'background: color-mix(in srgb, var(--jn-bg), var(--jn-grey) 10%)'
                 ],
                 selected_hovered: [
-                    'filter: brightness(0.8)',
-                    'background: var(--ax-sf)',
+                    'background: color-mix(in srgb, var(--jn-bg), var(--jn-grey) 10%)'
                 ],
             },
             options

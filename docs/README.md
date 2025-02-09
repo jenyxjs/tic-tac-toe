@@ -1,7 +1,6 @@
 # TODO
 
-- feat: add Mic icon
-- feat: add Volume icon
+- github - jenyx
 - feat: add animation move
 - feat: add Language page
 - feat: Settingc
@@ -13,7 +12,7 @@
 - feat: add settings page
 - feat: add indexeddb store - settings
 - feat: add gametimer
-  
+
 
 - Theme
 - color_text

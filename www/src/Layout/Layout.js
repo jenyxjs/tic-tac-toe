@@ -41,5 +41,16 @@ export class Layout extends Control {
                 'margin: 0',
             ]
         });
+
+        new CssRule({
+            selector: ':root',
+            style: [
+                `--jn-primary: hsl(200 50% 90%)`,
+                `--jn-bg: hsl(0 0% 100%)`,
+                `--jn-text: hsl(0 0% 10%)`,
+                `--jn-link: hsl(0 0% 15%)`,
+                `--jn-grey: hsl(0 0% 50%)`,
+            ]
+        });
     }
 }
