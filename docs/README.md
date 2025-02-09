@@ -1,8 +1,5 @@
 # TODO
 
-- feat: add Highlight win line
-- feat: add Google Analytics component
-- 
 - PWA
 - Theme
 - Language
@@ -10,3 +7,5 @@
 - color_text
 - bundl.js
 - docs: add app.js
+
+- feat: add Google Analytics component

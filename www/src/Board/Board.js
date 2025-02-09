@@ -2,7 +2,7 @@ import { Control } from '../../lib/jenyx/components/Control/Control.js';
 import { Button } from '../Layout/Button.js'
 
 export class Board extends Control {
-    constructor (options) {
+    constructor(options) {
         super({
             moves: '',
             winner: null,
@@ -32,27 +32,28 @@ export class Board extends Control {
         Board.init.call(this);
     }
 
-    static init () {
+    static init() {
         this.on('click', event => {
             if (this.winner || this.isDraw) {
                 this.emit('newgame');
             } else {
                 this.appendMove(event);
             }
-        }, {bubbling: true});
+        }, { bubbling: true });
 
         this.bind('moves', this, 'redraw');
+        this.bind('winner', this, 'effect');
+        this.bind('isDraw', this, 'effect');
     }
 
-    appendMove (event) {
-        var index = event.target.name.split('_')[1];
-
+    appendMove(event) {
         if (!event.target.text) {
+            var index = event.target.name.split('_')[1];
             this.moves += index;
         }
     }
 
-    redraw () {
+    redraw() {
         for (var i in this.children) {
             this[i].text = '';
         }
@@ -61,7 +62,26 @@ export class Board extends Control {
             var cell = this['cell_' + this.moves[i]];
             cell.text = i % 2 ? O_SVG : X_SVG;
         }
+
+        this.effect();
     }
+
+    effect() {
+        if (this.winner) {
+            for (var i in this.winner.path) {
+                var cell = this['cell_' + this.winner.path[i]];
+                cell.style = 'background: lightgreen';
+            }
+        } else if (this.isDraw) {
+            this.style = 'background: lightcoral';
+        } else {
+            this.style = 'background: aliceblue';
+
+            for (var i in this.children) {
+                this[i].style = 'background: none';
+            }
+        }
+    };
 }
 
 var X_SVG = `<svg width="100%" height="100%" viewBox="0 0 960 960">
