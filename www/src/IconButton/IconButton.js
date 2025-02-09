@@ -1,20 +1,20 @@
-import { ActiveControl } from '../ActiveControl/ActiveControl.js';
+import { ActiveControl } from '../../lib/jenyx/components/ActiveControl/ActiveControl.js';
 
 export class IconButton extends ActiveControl {
-    constructor (options) {
+    constructor(options) {
         super({
             style: [
                 'display: inline-block',
                 'flex-shrink: 0',
-                'width: 20px',
-                'height: 20px',
-                'border-radius: 2rem',
+                'width: 6vmin',
+                'height: 6vmin',
+                'padding: 3vmin',
+                'border-radius: 6vmin',
                 'text-decoration: none',
                 'cursor: pointer',
                 'font-size: 0',
-                'padding: 1rem',
-                'fill: var(--ax-on-sf)',
-                'background: none',
+                //'fill: red',
+                'background: green',
                 'filter: none',
             ],
             styleSet: {
