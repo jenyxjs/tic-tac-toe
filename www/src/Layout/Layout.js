@@ -1,6 +1,6 @@
 import { Control } from '../../lib/jenyx/components/Control/Control.js';
 import { CssRule } from '../../lib/jenyx/components/CssRule/CssRule.js';
-import { Bar } from './Bar.js';
+import { Bar } from '../Bar/Bar.js';
 import { Board } from '../Board/Board.js';
 import { Footer } from './Footer.js';
 

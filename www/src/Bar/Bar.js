@@ -1,5 +1,6 @@
 import { Control } from '../../lib/jenyx/components/Control/Control.js';
 import { Label } from '../../lib/jenyx/components/Label/Label.js';
+import { LinkButton } from '../../lib/jenyx/components/LinkButton/LinkButton.js';
 
 export class Bar extends Control {
     constructor(options) {
@@ -11,12 +12,23 @@ export class Bar extends Control {
                 message: {
                     class: Label,
                     style: [
-                        'padding: 2vmin',
-                        'text-align: center',
                         'font-size: 5vmin',
+                        'flex-basis: 100%',
                     ],
                 },
+                micButton: {
+                    class: LinkButton,
+                    text: 'Mic',
+                    href: 'https://github.com/jenyxjs/jenyx',
+                },
             },
+            style: [
+                'display: flex',
+                'align-items: center',
+                'width: 100%',
+                'gap: 2vmin',
+                'margin: 2vmin 0',
+            ],
             options
         });
 
@@ -35,9 +47,9 @@ export class Bar extends Control {
         } else if (this.winner) {
             this.message.text = 'Win - ' + this.winner.player.toUpperCase();
         } else if (this.moves) {
-            this.message.text = 'Game in progress';
+            this.message.text = ' ';
         } else {
-            this.message.text = 'Start the game';
+            this.message.text = 'Make move!';
         }
     }
 }

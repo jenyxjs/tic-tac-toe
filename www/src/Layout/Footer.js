@@ -10,15 +10,29 @@ export class Footer extends Control {
                     class: Label,
                     text: '© 2025',
                 },
-                gihub: {
+                gihubButton: {
                     class: LinkButton,
                     text: 'GitHub',
+                    href: 'https://github.com/jenyxjs/jenyx',
+                },
+                installButton: {
+                    class: LinkButton,
+                    text: 'Install',
+                    href: 'https://github.com/jenyxjs/jenyx',
+                },
+                themeButton: {
+                    class: LinkButton,
+                    text: 'Theme',
+                    href: 'https://github.com/jenyxjs/jenyx',
+                },
+                languageButton: {
+                    class: LinkButton,
+                    text: 'Language',
                     href: 'https://github.com/jenyxjs/jenyx',
                 },
             },
             style: [
                 'display: flex',
-                'width: 100%',
                 'gap: 3vmin',
                 'font-size: 4vmin',
                 'padding-top: 3vmin',
