@@ -22,7 +22,7 @@ export class Board extends Control {
                 'display: grid',
                 'grid-template-columns: repeat(3, 1fr)',
                 'line-height: 0',
-                'font-size: 20vmin',
+                'font-size: 0',
                 'border: 1px solid black',
             ],
             options

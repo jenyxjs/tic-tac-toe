@@ -15,26 +15,25 @@ export class Footer extends Control {
                     text: 'Jenyx',
                     href: 'https://github.com/jenyxjs/tic-tac-toe',
                 },
-                installButton: {
-                    class: LinkButton,
-                    text: 'Install',
-                    href: 'https://github.com/jenyxjs/jenyx',
-                },
-                themeButton: {
-                    class: LinkButton,
-                    text: 'Theme',
-                    href: 'https://github.com/jenyxjs/jenyx',
-                },
-                languageButton: {
-                    class: LinkButton,
-                    text: 'Language',
-                    href: 'https://github.com/jenyxjs/jenyx',
-                },
+                // installButton: {
+                //     class: LinkButton,
+                //     text: 'Install',
+                //     href: 'https://github.com/jenyxjs/jenyx',
+                // },
+                // themeButton: {
+                //     class: LinkButton,
+                //     text: 'Theme',
+                //     href: 'https://github.com/jenyxjs/jenyx',
+                // },
+                // languageButton: {
+                //     class: LinkButton,
+                //     text: 'Language',
+                //     href: 'https://github.com/jenyxjs/jenyx',
+                // },
             },
             style: [
                 'display: flex',
                 'gap: 3vmin',
-                'font-size: 4vmin',
                 'padding-top: 3vmin',
                 'width: 100%',
             ],

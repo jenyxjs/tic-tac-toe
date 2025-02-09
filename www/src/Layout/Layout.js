@@ -12,8 +12,8 @@ export class Layout extends Control {
                 board: {
                     class: Board,
                     style: [
-                        'height: 80vmin',
-                        'width: 80vmin',
+                        'height: 70vmin',
+                        'width: 70vmin',
                     ]
                 },
                 footer: { class: Footer, },
@@ -21,10 +21,10 @@ export class Layout extends Control {
             style: [
                 'display: flex',
                 'flex-direction: column',
-                'align-items: center',
                 'font-family: system-ui',
                 'width: fit-content',
                 'margin: auto',
+                'font-size: 4.5vmin',
             ],
             options
         });
