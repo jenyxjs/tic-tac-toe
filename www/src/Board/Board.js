@@ -64,11 +64,10 @@ export class Board extends Control {
             var ms = 200;
 
             cell.style = 'transition: opacity 0s; opacity: 0;';
-
             setTimeout(() => {
                 cell.style = `transition: opacity ${ms}ms; opacity: 1;`;
                 setTimeout(() => this.effect(), ms);
-            }, ms);
+            });
         }
 
         if(!this.moves.length) {
