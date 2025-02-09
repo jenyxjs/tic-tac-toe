@@ -1,9 +1,10 @@
 # TODO
 
-- feat: add animation move
+- feat: add svg background 
+- fead: add NavigationDriver
+- 
 - feat: add Language page
-- feat: Settingc
-- fead: add menu button
+- feat: Setting
 - feat: mp3
 - feat: add Speech
 - feat: add PWA

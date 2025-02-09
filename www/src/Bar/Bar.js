@@ -1,6 +1,7 @@
 import { Control } from '../../lib/jenyx/components/Control/Control.js';
 import { Label } from '../../lib/jenyx/components/Label/Label.js';
 import { IconButton } from '../IconButton/IconButton.js';
+import { MENU_SVG } from './MENU_SVG.js';
 
 export class Bar extends Control {
     constructor(options) {
@@ -9,6 +10,13 @@ export class Bar extends Control {
             winner: null,
             isDraw: false,
             children: {
+                mwnuButton: {
+                    class: IconButton,
+                    text: MENU_SVG,
+                    onclick: event => {
+
+                    },
+                },
                 message: {
                     class: Label,
                     style: [

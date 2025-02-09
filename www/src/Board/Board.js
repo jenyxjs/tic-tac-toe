@@ -23,7 +23,6 @@ export class Board extends Control {
                 'grid-template-columns: repeat(3, 1fr)',
                 'line-height: 0',
                 'font-size: 0',
-                'border: 1px solid black',
             ],
             options
         });
@@ -40,11 +39,7 @@ export class Board extends Control {
             }
         }, { bubbling: true });
 
-        this.bind('moves', this, 'redraw');
-        this.bind('winner', this, 'effect');
-        this.bind('isDraw', this, 'effect');
-
-        this.effect();
+        this.bind('moves', this, 'redraw', { run: true });
     }
 
     appendMove(event) {
@@ -62,9 +57,23 @@ export class Board extends Control {
         for (var i in this.moves) {
             var cell = this['cell_' + this.moves[i]];
             cell.text = i % 2 ? O_SVG : X_SVG;
+            cell.style = 'transition: opacity 0s; opacity: 1;';
         }
 
-        this.effect();
+        if (cell) {
+            var ms = 200;
+
+            cell.style = 'transition: opacity 0s; opacity: 0;';
+
+            setTimeout(() => {
+                cell.style = `transition: opacity ${ms}ms; opacity: 1;`;
+                setTimeout(() => this.effect(), ms);
+            }, ms);
+        }
+
+        if(!this.moves.length) {
+            this.effect();
+        }
     }
 
     effect() {

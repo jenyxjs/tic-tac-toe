@@ -9,11 +9,7 @@ export class Button extends ActiveControl {
                 'justify-content: center',
                 'text-decoration: none',
                 'cursor: pointer',
-                'border: 1px solid black',
                 'aspect-ratio: 1 / 1',
-                'background: var(--jn-sf)',
-                'color: var(--jn-on-sf)',
-                'fill: var(--jn-on-sf)',
             ],
             styleSet: {
                 hovered: [
