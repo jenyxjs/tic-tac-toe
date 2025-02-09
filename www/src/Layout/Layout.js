@@ -21,10 +21,10 @@ export class Layout extends Control {
             style: [
                 'display: flex',
                 'flex-direction: column',
-                'font-family: system-ui',
                 'width: fit-content',
                 'margin: auto',
-                'font-size: 4.5vmin',
+                `font-family: 'Patrick Hand', cursive`,
+                'font-size: clamp(1rem, 6vmin, 3rem)',
             ],
             options
         });
