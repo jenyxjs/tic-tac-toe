@@ -35,7 +35,7 @@ export class Board extends Control {
     static init () {
         this.on('click', event => {
             if (this.winner || this.isDraw) {
-                console.log(event);
+                this.emit('newgame');
             } else {
                 this.appendMove(event);
             }

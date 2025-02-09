@@ -23,6 +23,8 @@ export class App extends AbstractApp {
         this.gear.bind('moves', this.layout.board);
         this.gear.bind('winner', this.layout.board);
         this.gear.bind('isDraw', this.layout.board);
+
+        this.layout.board.bind('newgame', this.gear, 'reset');
     }
 }
 

@@ -1,7 +1,5 @@
 # TODO
 
-- feat: block button after over
-- feat: add Start game
 - feat: add Highlight win line
 - feat: add Google Analytics component
 - 
