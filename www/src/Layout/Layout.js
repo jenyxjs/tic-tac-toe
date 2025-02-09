@@ -1,4 +1,5 @@
 import { Control } from '../../lib/jenyx/components/Control/Control.js';
+import { CssRule } from '../../lib/jenyx/components/CssRule/CssRule.js';
 import { Bar } from './Bar.js';
 import { Board } from './Board.js';
 import { Footer } from './Footer.js';
@@ -26,6 +27,19 @@ export class Layout extends Control {
                 'margin: auto',
             ],
             options
+        });
+
+        Layout.init.call(this);
+    }
+
+    static init() {
+        new CssRule({
+            selector: 'html, body',
+            style: [
+                'height: 100%',
+                'max-height: 100%',
+                'margin: 0',
+            ]
         });
     }
 }
