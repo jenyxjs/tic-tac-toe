@@ -1,6 +1,5 @@
 import { AbstractApp } from '../../lib/jenyx/components/AbstractApp/AbstractApp.js';
-import { CssRule } from '../../lib/jenyx/components/CssRule/CssRule.js';
-import { Layout } from './Layout.js';
+import { Layout } from '../Layout/Layout.js';
 import { Gear } from './Gear.js';
 
 export class App extends AbstractApp {
@@ -11,15 +10,6 @@ export class App extends AbstractApp {
                 parentNode: document.body,
             },
             gear: { class: Gear, },
-        });
-
-        new CssRule({
-            selector: 'html, body',
-            style: [
-                'height: 100%',
-                'max-height: 100%',
-                'margin: 0',
-            ]
         });
 
         App.init.call(this);

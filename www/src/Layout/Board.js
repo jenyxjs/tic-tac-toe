@@ -1,5 +1,5 @@
 import { Control } from '../../lib/jenyx/components/Control/Control.js';
-import { Button } from './Button.js'
+import { Button } from '../Layout/Button.js'
 
 export class Board extends Control {
     constructor (options) {
