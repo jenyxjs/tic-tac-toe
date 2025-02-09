@@ -6,6 +6,12 @@
 
 This library provides universal components for creating various applications in JavaScript, including games, interactive interfaces, and other web programs.
 
+## Source code
+
+```javascript
+// 
+```
+
 ## Example Usage
 
 As an example, a **Tic-Tac-Toe** game was created to demonstrate the capabilities of the library in action.
