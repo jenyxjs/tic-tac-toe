@@ -19,7 +19,7 @@ class Event {
                 var isTarget = (listener.context == this.target);
                 var isBubbling = listener.bubbling;
                 if (!isHandler || !isType || !(isTarget || isBubbling)) continue;
-                
+
                 if (listener.final) {
                     clearTimeout(listener.finalTimeoutId);
                     listener.finalTimeoutId = setTimeout(() => {
@@ -76,7 +76,7 @@ class Listener {
 
 
 class Component {
-    constructor (options) {
+    constructor(options) {
         Object.defineProperty(this, '_', { enumerable: false, value: {} });
         this.defineProperty('name', { enumerable: false });
         this.defineProperty('host', { enumerable: false });
@@ -89,7 +89,7 @@ class Component {
 
     static version = '0.3';
 
-    get fullname () {
+    get fullname() {
         var fullname = [];
 
         var constructor = this.constructor;
@@ -102,25 +102,25 @@ class Component {
         return fullname.join('_');
     }
 
-    get listeners () {
+    get listeners() {
         return this._.listeners;
     }
 
-    set listeners (listeners) {
+    set listeners(listeners) {
         for (var type in listeners) {
             var handler = listeners[type];
             this.on(type, handler);
         }
     }
 
-    removeListeners (type) {
+    removeListeners(type) {
         for (var i in this._.listeners) {
             var listener = this._.listeners[i];
             (listener.type == type) && listener.remove();
         }
     }
 
-    emit (type, value) {
+    emit(type, value) {
         var event = new Event({
             targetType: type,
             type: type,
@@ -138,7 +138,7 @@ class Component {
         });
     }
 
-    on (type, handler, options) {
+    on(type, handler, options) {
         return new Listener({
             context: this,
             type: type,
@@ -150,7 +150,7 @@ class Component {
         });
     }
 
-    wait (type, options) {
+    wait(type, options) {
         if (this[type]) return this[type];
 
         return new Promise(resolve => {
@@ -161,7 +161,7 @@ class Component {
         });
     }
 
-    bind (type, object, key, options) {
+    bind(type, object, key, options) {
         key ||= type;
 
         if (typeof object[key] == 'function') {
@@ -171,13 +171,13 @@ class Component {
         }
     }
 
-    _bindFunction (type, object, key, options) {
+    _bindFunction(type, object, key, options) {
         this.on(type, event => {
             object[key].call(object, event, this[type]);
         }, options);
     }
 
-    _bindProperty (type, object, key, options) {
+    _bindProperty(type, object, key, options) {
         var runOptions = { ...options, run: true };
 
         this.on(type, event => {
@@ -189,7 +189,7 @@ class Component {
         }, runOptions);
     }
 
-    defineProperty (name, options) {
+    defineProperty(name, options) {
         var enumerable = (options?.enumerable === false) ? false : true;
 
         Object.defineProperty(this, name, {
@@ -206,7 +206,7 @@ class Component {
         });
     }
 
-    set options (options) {
+    set options(options) {
         for (var name in options) {
             var value = options[name];
             var newClass = value?.class;
@@ -232,11 +232,11 @@ class Component {
         this.emit('options', options);
     }
 
-    get children () {
+    get children() {
         return this._.children;
     }
 
-    set children (children) {
+    set children(children) {
         for (var name in children) {
             var value = children[name];
 
@@ -249,7 +249,7 @@ class Component {
         this.emit('children');
     }
 
-    getNewClass (name, value = {}) { 
+    getNewClass(name, value = {}) {
         var { class: Class, ...newOptions } = Object.assign({
             name: name,
             host: this,
@@ -258,7 +258,7 @@ class Component {
         return new Class(newOptions);
     }
 
-    appendChild (name, child) {
+    appendChild(name, child) {
         child.parent = this;
         this._.children[name] = child;
 
@@ -274,19 +274,19 @@ class Component {
         this.emit('child', child);
     }
 
-    removeChildren () {
+    removeChildren() {
         this._.children = {};
         this.emit('child');
     }
 
-    replaceChildren (children) {
+    replaceChildren(children) {
         this.removeChildren();
         this.children = children;
     }
 }
 
 class AbstractApp extends Component {
-    constructor (options) {
+    constructor(options) {
         super({ app: null });
 
         (options.root || window).app = this;
@@ -296,153 +296,153 @@ class AbstractApp extends Component {
     }
 }
 
-function createElement (tagName, parentNode, attrs, css) {
-	var node = document.createElement(tagName);
+function createElement(tagName, parentNode, attrs, css) {
+    var node = document.createElement(tagName);
 
-	parentNode?.appendChild(node);
-	return node;
+    parentNode?.appendChild(node);
+    return node;
 }
 
 class Control extends Component {
-	constructor (options) {
-		super();
+    constructor(options) {
+        super();
 
-		this.defineProperty('node', { enumerable: false });
-		var tagName = options?.tagName || 'div';
-		this.node = document.createElement(tagName);
-		this._.visible = true;
-		this.options = options;
+        this.defineProperty('node', { enumerable: false });
+        var tagName = options?.tagName || 'div';
+        this.node = document.createElement(tagName);
+        this._.visible = true;
+        this.options = options;
 
-		Control.init.call(this);
-	}
+        Control.init.call(this);
+    }
 
-	static stylesheet = createElement('style', document.head).sheet;
+    static stylesheet = createElement('style', document.head).sheet;
 
-	static async init () {
-		this.node.className = this.className;
+    static async init() {
+        this.node.className = this.className;
 
-		this.on('name', event => {
-			this.node.setAttribute('data-name', this.name);
-		});
-	}
+        this.on('name', event => {
+            this.node.setAttribute('data-name', this.name);
+        });
+    }
 
-	get visible () {
-		return this._.visible;
-	}
+    get visible() {
+        return this._.visible;
+    }
 
-	set visible (visible) {
-		if (this.visible != visible) {
-			this._.visible = visible;
-			this.refreshVisible();
-			this.emit('visible');
-		}
-	}
+    set visible(visible) {
+        if (this.visible != visible) {
+            this._.visible = visible;
+            this.refreshVisible();
+            this.emit('visible');
+        }
+    }
 
-	refreshVisible () {
-		if (this.visible) {
-			var display = this._.styleIndex?.display || '';
-		} else {
-			var display = 'none';
-		}
+    refreshVisible() {
+        if (this.visible) {
+            var display = this._.styleIndex?.display || '';
+        } else {
+            var display = 'none';
+        }
 
-		this.node.style.display = display;
-	}
+        this.node.style.display = display;
+    }
 
-	get style () {
-		return this._.style || [];
-	}
+    get style() {
+        return this._.style || [];
+    }
 
-	set style (style) {
-		if (typeof style == 'string') style = style.split(';');
-		this._.styleIndex = concatStyle(this.style, style);
-		this._.style = indexToStyle(this._.styleIndex);
-		this.node.style.cssText = this._.style.join(';');
-		this.refreshVisible();
-	}
+    set style(style) {
+        if (typeof style == 'string') style = style.split(';');
+        this._.styleIndex = concatStyle(this.style, style);
+        this._.style = indexToStyle(this._.styleIndex);
+        this.node.style.cssText = this._.style.join(';');
+        this.refreshVisible();
+    }
 
-	get className () {
-		var cssName = [];
-		var constructor = this.constructor;
+    get className() {
+        var cssName = [];
+        var constructor = this.constructor;
 
-		while (constructor.name) {
-			cssName.push(constructor.name);
-			constructor = constructor.__proto__;
-		}
-		cssName.pop();
+        while (constructor.name) {
+            cssName.push(constructor.name);
+            constructor = constructor.__proto__;
+        }
+        cssName.pop();
 
-		return 'jn-' + cssName.join('-');
-	}
+        return 'jn-' + cssName.join('-');
+    }
 
-	get parentNode () {
-		return this.node.parentNode;
-	}
+    get parentNode() {
+        return this.node.parentNode;
+    }
 
-	set parentNode (parentNode) {
-		this.node && parentNode.appendChild(this.node);
-	}
+    set parentNode(parentNode) {
+        this.node && parentNode.appendChild(this.node);
+    }
 
-	set options (options) {
-		if (options?.node) {
-			for (var attr in options.node) {
-				this.node[attr] = options.node[attr];
-			}
-			delete options.node;
-		}
+    set options(options) {
+        if (options?.node) {
+            for (var attr in options.node) {
+                this.node[attr] = options.node[attr];
+            }
+            delete options.node;
+        }
 
-		super.options = options;
-	}
+        super.options = options;
+    }
 
-	appendChild (name, child) {
-		super.appendChild(name, child);
+    appendChild(name, child) {
+        super.appendChild(name, child);
 
-		if (child.parentNode) {
-			child.parentNode.appendChild(child.node);
-		} else {
-			this.node
-				&& child.node
-				&& !child.node.parentNode
-				&& this.node.appendChild(child.node);
-		}
-	}
+        if (child.parentNode) {
+            child.parentNode.appendChild(child.node);
+        } else {
+            this.node
+                && child.node
+                && !child.node.parentNode
+                && this.node.appendChild(child.node);
+        }
+    }
 
-	removeChildren () {
-		this.node.innerHTML = '';
-		super.removeChildren();
-	}
+    removeChildren() {
+        this.node.innerHTML = '';
+        super.removeChildren();
+    }
 }
 
-function concatStyle (styles1, styles2) {
-	var index = {};
+function concatStyle(styles1, styles2) {
+    var index = {};
 
-	styles1.forEach(value => {
-		var key = value.split(':')[0];
-		var value = value.split(':')[1];
-		index[key] = value.trim();
-	});
+    styles1.forEach(value => {
+        var key = value.split(':')[0];
+        var value = value.split(':')[1];
+        index[key] = value.trim();
+    });
 
-	styles2.forEach(value => {
-		if (value.trim()) {
-			var key = value.split(':')[0].trim();
-			var value = value.split(':')[1].trim();
-			index[key] = value;
-		}
-	});
+    styles2.forEach(value => {
+        if (value.trim()) {
+            var key = value.split(':')[0].trim();
+            var value = value.split(':')[1].trim();
+            index[key] = value;
+        }
+    });
 
-	return index;
+    return index;
 }
 
-function indexToStyle (index) {
-	var style = [];
+function indexToStyle(index) {
+    var style = [];
 
-	for (var i in index) {
-		style.push(`${i}: ${index[i]}`);
-	}
+    for (var i in index) {
+        style.push(`${i}: ${index[i]}`);
+    }
 
-	return style;
+    return style;
 }
 
 class CssRule extends Component {
-    constructor (options) {
+    constructor(options) {
         super({
             selector: '',
             style: [],
@@ -453,14 +453,14 @@ class CssRule extends Component {
         CssRule.init.call(this);
     }
 
-    static async init () {
+    static async init() {
         this.bind('selector', this, 'refresh');
         this.bind('style', this, 'refresh', { run: true });
     }
 
     static stylesheet = null;
 
-    refresh () {
+    refresh() {
         CssRule.stylesheet ||= createElement('style', document.head).sheet;
 
         if (this.index !== null) {
@@ -472,7 +472,7 @@ class CssRule extends Component {
         }
     }
 
-    createStylesheetRule () {
+    createStylesheetRule() {
         try {
             var stylesheet = CssRule.stylesheet;
             var styles = this.style.join(';');
@@ -486,7 +486,7 @@ class CssRule extends Component {
 }
 
 class Label extends Control {
-    constructor (options) {
+    constructor(options) {
         super({
             text: '',
             options
@@ -726,7 +726,7 @@ class ActiveControl extends Control {
 }
 
 class Button extends ActiveControl {
-    constructor (options) {
+    constructor(options) {
         super({
             style: [
                 'display: flex',
@@ -789,7 +789,7 @@ class Board extends Control {
                 'line-height: 0',
                 'font-size: 0',
                 'margin: auto',
-                `background: url("src/Assert/BOARD_SVG.svg")`,
+                `background: url("src/Assets/BOARD_SVG.svg")`,
             ],
             options
         });
@@ -871,7 +871,7 @@ var O_SVG = `<svg width="100%" height="100%" viewBox="0 0 960 960">
 </svg>`;
 
 class LinkButton extends ActiveControl {
-    constructor (options) {
+    constructor(options) {
         super({
             style: [
                 'text-decoration: none',
@@ -1093,7 +1093,7 @@ class Gear extends Component {
     }
 
     reset() {
-        this.activePlayer  = 'x';
+        this.activePlayer = 'x';
         this.winner = null;
         this.isDraw = false;
         this.moves = '';
@@ -1102,9 +1102,9 @@ class Gear extends Component {
     update() {
         this.isDraw = (this.moves.length === 9 && !this.winner);
         this.winner = this.getWinner();
-        this.activePlayer  = (this.moves.length % 2 === 0) ? 'x' : 'o';
+        this.activePlayer = (this.moves.length % 2 === 0) ? 'x' : 'o';
 
-        if (this.activePlayer  === 'o' && !this.winner && !this.isDraw) {
+        if (this.activePlayer === 'o' && !this.winner && !this.isDraw) {
             var move = this.getBotMove();
 
             if (move) {
@@ -1171,7 +1171,7 @@ class Gear extends Component {
     }
 }
 
-function bindLocalStorage (property, target, name) {
+function bindLocalStorage(property, target, name) {
     name ||= property;
 
     window.addEventListener('storage', event => {
@@ -1186,7 +1186,7 @@ function bindLocalStorage (property, target, name) {
     load(property, target, name);
 }
 
-function load (property, target, name) {
+function load(property, target, name) {
     name ||= property;
     var value = localStorage[name];
 
@@ -1195,7 +1195,7 @@ function load (property, target, name) {
     }
 }
 
-function save (property, target, name) {
+function save(property, target, name) {
     name ||= property;
     localStorage[name] = JSON.stringify(target[property]);
 }
@@ -1313,16 +1313,16 @@ class SpeechRecognition extends Component {
 class Mic extends Component {
     constructor(options) {
         super({
-          isActive: false,
-          speechRecognition: {
-            class: SpeechRecognition,
-          },
-          options,
+            isActive: false,
+            speechRecognition: {
+                class: SpeechRecognition,
+            },
+            options,
         });
 
         Mic.init.call(this);
     }
-    
+
     static init() {
         this.bind('isActive', this.speechRecognition);
         this.speechRecognition.bind('text', this, 'recognize');
@@ -1347,7 +1347,7 @@ class Mic extends Component {
             app.moves = '';
         }
 
-        if (result.length === 1 && '123456789'.includes(result)) {    
+        if (result.length === 1 && '123456789'.includes(result)) {
             if (app.winner || app.isDraw) {
                 app.moves = '';
             }
@@ -1360,7 +1360,7 @@ class Mic extends Component {
 }
 
 class Pwa extends Component {
-    constructor (options) {
+    constructor(options) {
         super({
             deferedPrompt: null,
             serviceWorkerFileName: '',
@@ -1373,7 +1373,7 @@ class Pwa extends Component {
         Pwa.init.call(this);
     }
 
-    static async init () {
+    static async init() {
         window.addEventListener('beforeinstallprompt', event => {
             this.deferedPrompt = event;
             event.preventDefault();
@@ -1382,7 +1382,7 @@ class Pwa extends Component {
         this.bind('serviceWorkerFileName', this.registerServiceWorker);
     };
 
-    install () {
+    install() {
         this.deferedPrompt.prompt();
 
         this.deferedPrompt.userChoice.then(choiceResult => {
@@ -1469,7 +1469,7 @@ class GoogleAnalytics extends Component {
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', this.id);        
+        gtag('config', this.id);
     }
 }
 

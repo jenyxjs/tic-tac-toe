@@ -24,7 +24,7 @@ export class Board extends Control {
                 'line-height: 0',
                 'font-size: 0',
                 'margin: auto',
-                `background: url("src/Assert/BOARD_SVG.svg")`,
+                `background: url("src/Assets/BOARD_SVG.svg")`,
             ],
             options
         });

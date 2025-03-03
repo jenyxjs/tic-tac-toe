@@ -9,7 +9,7 @@
     "display": "standalone",
     "icons": [
         {
-            "src": "./src/Assert/favicon.svg",
+            "src": "./src/Assets/favicon.svg",
             "sizes": "512x512",
             "purpose": "any"
         }
